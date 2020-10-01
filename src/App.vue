@@ -1,72 +1,29 @@
 <template>
   <div id="app" class="root">
-    <div class="root__container">
-      <div class="card" style="width: 18rem">
-        <img
-          class="card-img-top"
-          src="https://cs5.pikabu.ru/post_img/big/2015/04/23/8/1429794583_343353562.png"
-          alt="Card image cap"
-        />
-        <div class="card-body">
-          <p class="card-text" :style="{ fontSize: fontSize + 'px' }">
-            {{ titleUpper }}
-          </p>
-        </div>
-      </div>
-      <form>
-        <div class="form-group">
-          <label for="formGroupExampleInput">title</label>
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            v-model="title"
-          />
-        </div>
-        <div class="form-group">
-          <label for="formGroupExampleInput2">font size</label>
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput2"
-            v-model="fontSize"
-          />
-        </div>
-      </form>
-    </div>
+    <Card :startValues="initialValues" />
   </div>
 </template>
 
 <script>
+import Card from "./components/card";
 export default {
   name: "App",
+  components: {
+    Card,
+  },
 
   data() {
     return {
-      title: "MENU",
-      fontSize: 16,
+      initialValues: {
+        title: "MENU",
+        fontSize: 16,
+        srcImage:
+          "https://cs5.pikabu.ru/post_img/big/2015/04/23/8/1429794583_343353562.png",
+      },
     };
-  },
-  computed: {
-    titleUpper: function () {
-      return this.title.toUpperCase();
-    },
   },
 };
 </script>
 
 <style lang="scss">
-.root__container {
-  display: flex;
-  justify-content: space-between;
-  width: 520px;
-  margin: 0 auto;
-  margin-top: 20%;
-}
-.card-body {
-  display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  font-weight: 600;
-}
 </style>
